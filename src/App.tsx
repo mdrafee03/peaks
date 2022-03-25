@@ -1,10 +1,12 @@
-import React from "react";
-import Home from "components/Home";
+import Home from "pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = (): JSX.Element => (
-  <div css={{ color: "pink" }} className="app">
-    <Home />
-  </div>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+  </BrowserRouter>
 );
 
 export default App;
