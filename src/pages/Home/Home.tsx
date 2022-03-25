@@ -1,8 +1,8 @@
-import Card from '../Card/Card';
-import Loader from '../Loader/Loader';
+import Card from '../../components/Card/Card';
+import Loader from '../../components/Loader/Loader';
 import { useEffect } from 'react';
 import useTopNewsFetching from './hooks/useTopNewsFetching/useTopNewsFetching';
-import ContentHeader from '../ContentHeader/ContentHeader';
+import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { css } from '@emotion/react';
 const styles = css({
   display: 'flex',
@@ -55,7 +55,10 @@ const Home = (): JSX.Element => {
       {isLoading && <Loader />}
       <div css={styles} className="cards-container">
         {data?.response.results.map((article, index) => (
-          <article className={`card-wrapper ${index === 0 ? 'first' : ''}`} key={article.id}>
+          <article
+            className={`card-wrapper ${index === 0 ? 'first' : ''}`}
+            key={article.id}
+          >
             <Card title={article.webTitle} body={article.fields.trailText} />
           </article>
         ))}

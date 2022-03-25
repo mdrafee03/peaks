@@ -1,7 +1,7 @@
 import { css, Global, ThemeProvider } from '@emotion/react';
 import Topbar from './components/Topbar/Topbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './components/Home/Home';
+import Home from './pages/Home/Home';
 
 const theme = {
   colors: {
@@ -18,7 +18,8 @@ const styles = css({
     boxSizing: 'border-box',
   },
   code: {
-    fontFamily: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace",
+    fontFamily:
+      "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace",
   },
 });
 
