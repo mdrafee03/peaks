@@ -22,5 +22,6 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': ['error', { singleQuote: true }],
+    '@typescript-eslint/no-empty-function': 0,
   },
 };

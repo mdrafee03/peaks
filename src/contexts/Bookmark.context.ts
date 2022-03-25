@@ -5,6 +5,7 @@ interface BookmarkContextState {
   addBookmark: (article: Bookmark) => boolean;
   removeBookmark: (id: string) => boolean;
   checkIfBookmarked: (id: string) => boolean;
+  sortBookmarkByDate: (orderBy?: string) => void;
 }
 
 const bookmarkDefaultState: BookmarkContextState = {
@@ -12,6 +13,7 @@ const bookmarkDefaultState: BookmarkContextState = {
   addBookmark: () => true,
   removeBookmark: () => true,
   checkIfBookmarked: () => true,
+  sortBookmarkByDate: () => {},
 };
 const context = createContext<BookmarkContextState>(bookmarkDefaultState);
 

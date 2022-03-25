@@ -7,8 +7,7 @@ import useArticleFetching from './hooks/useArticleFetching/useArticleFetching';
 
 const Article = (): JSX.Element => {
   const { request, data, isLoading } = useArticleFetching();
-  const { checkIfBookmarked, addBookmark, removeBookmark } =
-    useBookmarkContext();
+  const { checkIfBookmarked, addBookmark, removeBookmark } = useBookmarkContext();
   const [isBookmarked, setIsBookmarked] = useState<boolean>();
   const { id } = useParams();
 
@@ -28,6 +27,7 @@ const Article = (): JSX.Element => {
         id: id,
         webTitle: data.response.content.webTitle,
         trailText: data.response.content.fields.trailText,
+        webPublicationDate: data.response.content.webPublicationDate,
       });
       if (isSuccess) setIsBookmarked(true);
     }

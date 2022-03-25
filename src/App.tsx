@@ -22,8 +22,7 @@ const styles = css({
     boxSizing: 'border-box',
   },
   code: {
-    fontFamily:
-      "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace",
+    fontFamily: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace",
   },
 });
 

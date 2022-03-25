@@ -29,16 +29,6 @@ const Home = (): JSX.Element => {
     request('newest');
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      console.log(data);
-    }
-  }, [data]);
-
-  useEffect(() => {
-    console.log(isLoading);
-  }, [isLoading]);
-
   const handleBookmarkClick = () => {
     navigate('/bookmarks');
   };
@@ -46,6 +36,7 @@ const Home = (): JSX.Element => {
   const handleSelect = (orderBy: string) => {
     request(orderBy);
   };
+
   if (error) return <div>Oh! Crap</div>;
 
   return (

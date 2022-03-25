@@ -1,20 +1,23 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Card from 'src/components/Card/Card';
 import ContentHeader from 'src/components/ContentHeader/ContentHeader';
 import { useBookmarkContext } from '../../contexts/Bookmark.context';
 
 const Bookmarks = (): JSX.Element => {
-  const { bookmarks } = useBookmarkContext();
+  const { sortBookmarkByDate, bookmarks } = useBookmarkContext();
+
+  useEffect(() => {
+    sortBookmarkByDate();
+  }, []);
+
   const selectHandler = (orderBy: string) => {
-    console.log(orderBy);
+    sortBookmarkByDate(orderBy);
   };
+
   return (
     <section>
-      <ContentHeader
-        title="All Bookmark"
-        isBookmarkVisible={false}
-        onSelect={selectHandler}
-      />
+      <ContentHeader title="All Bookmark" isBookmarkVisible={false} onSelect={selectHandler} />
       {bookmarks.map((bookmark) => (
         <Link
           to={`/article/${encodeURIComponent(bookmark.id)}`}

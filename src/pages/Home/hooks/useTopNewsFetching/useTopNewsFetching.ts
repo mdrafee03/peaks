@@ -4,7 +4,6 @@ import useApi, { ApiResponse } from 'src/hooks/useApi/useApi';
 import GuardianData from 'src/interfaces/Guardian.interface';
 
 const fetcher = async (orderBy = 'newest'): Promise<GuardianData> => {
-  console.log(environment);
   const result = await axios.get<GuardianData>(`${environment.BASE_URL}/news`, {
     params: {
       'order-by': orderBy,

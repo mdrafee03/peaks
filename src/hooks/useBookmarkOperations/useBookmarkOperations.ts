@@ -16,10 +16,7 @@ const useBookmarkOperations = () => {
   const removeBookmark = (id: string) => {
     const index = bookmarks.findIndex((bookmark) => bookmark.id === id);
     if (index !== undefined) {
-      setBookmarks([
-        ...bookmarks.slice(0, index),
-        ...bookmarks.slice(index + 1),
-      ]);
+      setBookmarks([...bookmarks.slice(0, index), ...bookmarks.slice(index + 1)]);
       return true;
     } else {
       return false;
@@ -28,6 +25,16 @@ const useBookmarkOperations = () => {
   const checkIfBookmarked = (id: string) => {
     return bookmarks.some((bookmark) => bookmark.id === id);
   };
-  return { bookmarks, addBookmark, removeBookmark, checkIfBookmarked };
+
+  const sortBookmarkByDate = (orderBy = 'newest') => {
+    bookmarks.sort((a, b) => {
+      const firstDate = new Date(a.webPublicationDate).getTime();
+      const secondDate = new Date(b.webPublicationDate).getTime();
+      return orderBy === 'oldest' ? firstDate - secondDate : secondDate - firstDate;
+    });
+    setBookmarks([...bookmarks]);
+  };
+
+  return { bookmarks, addBookmark, removeBookmark, checkIfBookmarked, sortBookmarkByDate };
 };
 export default useBookmarkOperations;
