@@ -2,6 +2,7 @@ import { css, Global, ThemeProvider } from '@emotion/react';
 import Topbar from './components/Topbar/Topbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
+import Article from './pages/Article/Article';
 
 const theme = {
   colors: {
@@ -31,6 +32,7 @@ const App = (): JSX.Element => (
       <div css={{ margin: '2rem 10rem' }}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="article/:id" element={<Article />} />
         </Routes>
       </div>
     </BrowserRouter>

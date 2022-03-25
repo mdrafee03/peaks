@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import useTopNewsFetching from './hooks/useTopNewsFetching/useTopNewsFetching';
 import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { css } from '@emotion/react';
+import { Link } from 'react-router-dom';
 const styles = css({
   display: 'flex',
   alignItems: 'flex-start',
@@ -55,12 +56,13 @@ const Home = (): JSX.Element => {
       {isLoading && <Loader />}
       <div css={styles} className="cards-container">
         {data?.response.results.map((article, index) => (
-          <article
+          <Link
+            to={`/article/${encodeURIComponent(article.id)}`}
             className={`card-wrapper ${index === 0 ? 'first' : ''}`}
             key={article.id}
           >
             <Card title={article.webTitle} body={article.fields.trailText} />
-          </article>
+          </Link>
         ))}
       </div>
     </>
