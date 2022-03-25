@@ -2,9 +2,9 @@ import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
 import { useEffect } from 'react';
 import useTopNewsFetching from './hooks/useTopNewsFetching/useTopNewsFetching';
-import ContentHeader from '../../components/ContentHeader/ContentHeader';
 import { css } from '@emotion/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import ContentHeader from 'src/components/ContentHeader/ContentHeader';
 const styles = css({
   display: 'flex',
   alignItems: 'flex-start',
@@ -22,6 +22,7 @@ const styles = css({
 });
 
 const Home = (): JSX.Element => {
+  const navigate = useNavigate();
   const { data, isLoading, error, request } = useTopNewsFetching();
 
   useEffect(() => {
@@ -39,8 +40,9 @@ const Home = (): JSX.Element => {
   }, [isLoading]);
 
   const handleBookmarkClick = () => {
-    // pass
+    navigate('/bookmarks');
   };
+
   const handleSelect = (orderBy: string) => {
     request(orderBy);
   };

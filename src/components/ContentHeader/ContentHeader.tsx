@@ -43,7 +43,9 @@ const ContentHeader = ({
     <header css={styles}>
       <h1>{title}</h1>
       <div className="right-container">
-        {isBookmarkVisible && <BookMarkButton text="View BookMark" onClick={handleBookmarkClick} />}
+        {isBookmarkVisible && (
+          <BookMarkButton text="View BookMark" onClick={handleBookmarkClick} />
+        )}
         <select className="select" aria-label="State" onChange={handleSelect}>
           <option value="newest">Newest first</option>
           <option value="oldest">Oldest first</option>
