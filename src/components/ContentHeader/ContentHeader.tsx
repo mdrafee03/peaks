@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { ChangeEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BookmarkButton from '../BookmarkButton/BookmarkButton';
 
 const styles = css({
@@ -31,7 +32,10 @@ const ContentHeader = ({
   onclickBookmark,
   onSelect,
 }: Props): JSX.Element => {
+  const navigate = useNavigate();
+
   const handleBookmarkClick = () => {
+    navigate('/bookmarks');
     onclickBookmark?.();
   };
 

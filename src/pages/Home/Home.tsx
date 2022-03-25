@@ -1,10 +1,10 @@
+import { css } from '@emotion/react';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import ContentHeader from 'src/components/ContentHeader/ContentHeader';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
-import { useEffect } from 'react';
 import useTopNewsFetching from './hooks/useTopNewsFetching/useTopNewsFetching';
-import { css } from '@emotion/react';
-import { Link, useNavigate } from 'react-router-dom';
-import ContentHeader from 'src/components/ContentHeader/ContentHeader';
 const styles = css({
   display: 'flex',
   alignItems: 'flex-start',
@@ -22,16 +22,11 @@ const styles = css({
 });
 
 const Home = (): JSX.Element => {
-  const navigate = useNavigate();
   const { data, isLoading, error, request } = useTopNewsFetching();
 
   useEffect(() => {
     request('newest');
   }, []);
-
-  const handleBookmarkClick = () => {
-    navigate('/bookmarks');
-  };
 
   const handleSelect = (orderBy: string) => {
     request(orderBy);
@@ -41,11 +36,7 @@ const Home = (): JSX.Element => {
 
   return (
     <>
-      <ContentHeader
-        title="Top Stories"
-        onclickBookmark={handleBookmarkClick}
-        onSelect={handleSelect}
-      />
+      <ContentHeader title="Top Stories" onSelect={handleSelect} />
       {isLoading && <Loader />}
       <div css={styles} className="cards-container">
         {data?.response.results.map((article, index) => (

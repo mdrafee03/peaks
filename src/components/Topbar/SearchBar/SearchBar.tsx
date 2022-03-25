@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { ChangeEvent, useEffect, useState } from 'react';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 import useClickOutside from 'src/hooks/useClickOutside/useClickOutside';
 
 const styles = css({
@@ -75,9 +76,19 @@ const styles = css({
 });
 
 const SearchBar = (): JSX.Element => {
-  const [searchKey, setSearchKey] = useState<string>('');
+  const [searchKey, setSearchKey] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const { ref, isClickOutside, reset } = useClickOutside();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (searchKey !== null) {
+      navigate({
+        pathname: '/search-result',
+        search: createSearchParams({ q: searchKey }).toString(),
+      });
+    }
+  }, [searchKey]);
 
   useEffect(() => {
     if (isClickOutside && searchKey === '') {

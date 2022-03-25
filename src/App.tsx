@@ -1,11 +1,12 @@
 import { css, Global, ThemeProvider } from '@emotion/react';
-import Topbar from './components/Topbar/Topbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home/Home';
+import MainLayout from './components/MainLayout/MainLayout';
+import { BookmarkProvider } from './contexts/Bookmark.context';
+import useBookmarkOperations from './hooks/useBookmarkOperations/useBookmarkOperations';
 import Article from './pages/Article/Article';
 import Bookmarks from './pages/Bookmarks/Bookmarks';
-import useBookmarkOperations from './hooks/useBookmarkOperations/useBookmarkOperations';
-import { BookmarkProvider } from './contexts/Bookmark.context';
+import Home from './pages/Home/Home';
+import SearchResult from './pages/SearchResult/SearchResult';
 
 const theme = {
   colors: {
@@ -33,13 +34,15 @@ const App = (): JSX.Element => {
     <ThemeProvider theme={theme}>
       <Global styles={styles} />
       <BrowserRouter>
-        <Topbar />
         <div css={{ margin: '2rem 10rem' }}>
           <BookmarkProvider value={bookmark}>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="article/:id" element={<Article />} />
-              <Route path="bookmarks" element={<Bookmarks />} />
+              <Route path="" element={<MainLayout />}>
+                <Route path="" element={<Home />} />
+                <Route path="article/:id" element={<Article />} />
+                <Route path="bookmarks" element={<Bookmarks />} />
+                <Route path="search-result" element={<SearchResult />} />
+              </Route>
             </Routes>
           </BookmarkProvider>
         </div>
