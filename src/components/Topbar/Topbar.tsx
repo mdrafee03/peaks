@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo.svg';
+import SearchBar from './SearchBar/SearchBar';
 
 const topbarCss = `
   background: #09357b;
@@ -24,6 +25,7 @@ const Topbar = (): JSX.Element => {
       <Link to="/">
         <img src={Logo} alt="logo" />
       </Link>
+      <SearchBar />
     </header>
   );
 };
