@@ -1,7 +1,7 @@
-import { ThemeProvider } from '@emotion/react';
+import { css, Global, ThemeProvider } from '@emotion/react';
+import Topbar from './components/Topbar/Topbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home/Home';
-import Topbar from './components/Topbar/Topbar';
 
 const theme = {
   colors: {
@@ -9,8 +9,22 @@ const theme = {
   },
 };
 
+const styles = css({
+  body: {
+    margin: '0',
+    fontFamily: "Georgia, 'Times New Roman', Times, serif",
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
+    boxSizing: 'border-box',
+  },
+  code: {
+    fontFamily: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace",
+  },
+});
+
 const App = (): JSX.Element => (
   <ThemeProvider theme={theme}>
+    <Global styles={styles} />
     <BrowserRouter>
       <Topbar />
       <Routes>
