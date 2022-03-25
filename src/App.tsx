@@ -27,9 +27,11 @@ const App = (): JSX.Element => (
     <Global styles={styles} />
     <BrowserRouter>
       <Topbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <div css={{ margin: '2rem 10rem' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   </ThemeProvider>
 );
