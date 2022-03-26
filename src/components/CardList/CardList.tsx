@@ -16,6 +16,7 @@ const styles = css({
     maxWidth: '40%',
     margin: '0 15px 15px 0',
     height: '350px',
+    fontSize: '20px',
   },
   '& a:nth-of-type(3n)': {
     marginRight: 0,

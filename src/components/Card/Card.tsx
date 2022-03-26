@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import Logo from 'src/assets/logo.svg';
 
-const styles = (bottomLineColor?: string) =>
+const styles = (titleLen: number, bottomLineColor?: string) =>
   css({
     width: '100%',
     height: '100%',
@@ -27,7 +27,8 @@ const styles = (bottomLineColor?: string) =>
       boxSizing: 'border-box',
       header: {
         fontWeight: 700,
-        lineHeight: '30px',
+        lineHeight: '29px',
+        letterSpacing: '0.07px',
         fontSize: '1em',
         color: '#fff',
       },
@@ -36,8 +37,11 @@ const styles = (bottomLineColor?: string) =>
         color: '#fff',
         lineHeight: '20px',
         letterSpacing: '0.1px',
-        margin: '0',
-        padding: '5px 0',
+        margin: '5px 0',
+        display: '-webkit-box',
+        WebkitLineClamp: titleLen > 100 ? 1 : titleLen > 40 ? 2 : titleLen > 30 ? 3 : 4,
+        WebkitBoxOrient: 'vertical',
+        overflow: 'hidden',
       },
     },
     hr: {
@@ -58,7 +62,7 @@ interface Props {
 
 const Card = ({ imgUrl, title, body, bottomLineColor }: Props): JSX.Element => {
   return (
-    <section css={styles(bottomLineColor)}>
+    <section css={styles(title.length, bottomLineColor)}>
       {imgUrl ? (
         <div className="image-wrap">
           <img width="100%" height="100%" src={imgUrl} alt="card" />
@@ -70,7 +74,7 @@ const Card = ({ imgUrl, title, body, bottomLineColor }: Props): JSX.Element => {
       )}
       <article className="text-wrapper">
         <header>{title}</header>
-        {body && <p dangerouslySetInnerHTML={{ __html: body }}></p>}
+        {body && title.length < 110 && <p dangerouslySetInnerHTML={{ __html: body }}></p>}
       </article>
       <hr></hr>
     </section>
