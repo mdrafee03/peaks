@@ -20,6 +20,9 @@ const styles = css({
       color: 'rgba(0, 0, 0, 0.87)',
       margin: '15px 0',
       fontFamily: 'Roboto',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
     },
     '& .title': {
       fontSize: '34px',
@@ -28,6 +31,9 @@ const styles = css({
       color: 'rgba(0, 0, 0, 0.87)',
       margin: '10px 0',
       textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
     },
     '& .subtitle': {
       fontSize: '20px',
