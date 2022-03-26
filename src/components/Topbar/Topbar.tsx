@@ -1,27 +1,21 @@
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/logo.svg';
 import SearchBar from './SearchBar/SearchBar';
 
-const topbarCss = `
-  background: #09357b;
-  padding: 0 7rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  img {
-    width: 7rem;
-    padding: 2rem 0;
-  }
-`;
+const styles = (theme: Theme) =>
+  css({
+    background: theme.color.primary,
+    padding: '0 7rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    img: { width: '7rem', padding: '2rem 0' },
+  });
 
 const Topbar = (): JSX.Element => {
   return (
-    <header
-      css={css`
-        ${topbarCss}
-      `}
-    >
+    <header css={(theme) => styles(theme)}>
       <Link to="/">
         <img src={Logo} alt="logo" />
       </Link>
