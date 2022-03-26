@@ -19,13 +19,10 @@ interface Params {
 const CancelToken = axios.CancelToken;
 let cancel: Canceler;
 
-const fetcher = async ({
-  section = 'news',
-  pageSize = 15,
-  pageNumber = 1,
-  orderBy = 'newest',
-  searchKey = '',
-}: QueryParams): Promise<GuardianResponse> => {
+const fetcher = async (
+  { pageSize = 15, pageNumber = 1, orderBy = 'newest', searchKey = '' }: QueryParams,
+  section: string,
+): Promise<GuardianResponse> => {
   const params: Params = {
     section: section,
     page: pageNumber,
@@ -47,7 +44,7 @@ const useSearchQuery = (section: string) => {
   const [articles, setArticles] = useState<GuardianData[]>([]);
   const [hasMore, setHasMore] = useState(false);
   const { data, request, isLoading, error } = useApi<GuardianResponse, QueryParams>((queryParams) =>
-    fetcher({ ...queryParams, section: section }),
+    fetcher(queryParams, section),
   );
 
   useEffect(() => {
