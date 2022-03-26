@@ -56,9 +56,9 @@ const useTopArticlesQuery = () => {
 
   useEffect(() => {
     if (
-      newsApi.isLoading &&
-      sportsApi.isLoading &&
-      cultureApi.isLoading &&
+      newsApi.isLoading ||
+      sportsApi.isLoading ||
+      cultureApi.isLoading ||
       lifeandstyleApi.isLoading
     ) {
       setIsLoading(true);
