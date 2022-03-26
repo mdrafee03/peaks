@@ -44,7 +44,7 @@ interface Props {
 
 const Card = ({ imgUrl, title, body }: Props): JSX.Element => {
   return (
-    <section css={styles} className="card-section">
+    <section css={styles}>
       {imgUrl ? (
         <img src={imgUrl} alt="card" />
       ) : (

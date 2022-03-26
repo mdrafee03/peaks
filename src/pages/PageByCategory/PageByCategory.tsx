@@ -13,9 +13,8 @@ const styles = css({
   flexWrap: 'wrap',
   '& .card-wrapper': {
     flex: '1 1 30%',
-    marginRight: '30px',
-    marginBottom: '30px',
     minWidth: '300px',
+    margin: '0 15px 15px 0',
     height: '350px',
   },
 });

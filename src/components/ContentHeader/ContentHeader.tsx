@@ -14,8 +14,10 @@ const styles = css({
     border: 'none',
     background: 'none',
     borderBottom: '1px solid black',
-    width: '13rem',
+    width: '16rem',
     paddingBottom: '8px',
+    fontSize: '15px',
+    marginLeft: '10px',
   },
 });
 
