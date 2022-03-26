@@ -6,6 +6,7 @@ import useBookmarkOperations from './hooks/useBookmarkOperations/useBookmarkOper
 import Article from './pages/Article/Article';
 import Bookmarks from './pages/Bookmarks/Bookmarks';
 import Home from './pages/Home/Home';
+import PageByCategory from './pages/PageByCategory/PageByCategory';
 import SearchResult from './pages/SearchResult/SearchResult';
 
 const theme = {
@@ -41,6 +42,7 @@ const App = (): JSX.Element => {
               <Route path="article/:id" element={<Article />} />
               <Route path="bookmarks" element={<Bookmarks />} />
               <Route path="search-result" element={<SearchResult />} />
+              <Route path="category/:category" element={<PageByCategory />} />
             </Route>
           </Routes>
         </BookmarkProvider>
