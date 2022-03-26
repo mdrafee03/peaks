@@ -1,19 +1,16 @@
 import { css, Global, ThemeProvider } from '@emotion/react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainLayout from './components/MainLayout/MainLayout';
+import theme from './config/theme';
 import { BookmarkProvider } from './contexts/Bookmark.context';
+import { SnackbarProvider } from './contexts/Snackbar.context';
 import useBookmarkOperations from './hooks/useBookmarkOperations/useBookmarkOperations';
+import useSnackbarOperations from './hooks/useSnackbarOperations/useSnackbarOperations';
 import Article from './pages/Article/Article';
 import Bookmarks from './pages/Bookmarks/Bookmarks';
 import Home from './pages/Home/Home';
 import PageByCategory from './pages/PageByCategory/PageByCategory';
 import SearchResult from './pages/SearchResult/SearchResult';
-
-const theme = {
-  color: {
-    primary: 'rgba(9, 53, 123, 1)',
-  },
-};
 
 const styles = css({
   body: {
@@ -30,22 +27,25 @@ const styles = css({
 
 const App = (): JSX.Element => {
   const bookmark = useBookmarkOperations();
+  const snackbar = useSnackbarOperations();
 
   return (
     <ThemeProvider theme={theme}>
       <Global styles={styles} />
       <BrowserRouter>
-        <BookmarkProvider value={bookmark}>
-          <Routes>
-            <Route path="" element={<MainLayout />}>
-              <Route path="" element={<Home />} />
-              <Route path="article/:id" element={<Article />} />
-              <Route path="bookmarks" element={<Bookmarks />} />
-              <Route path="search-result" element={<SearchResult />} />
-              <Route path="category/:category" element={<PageByCategory />} />
-            </Route>
-          </Routes>
-        </BookmarkProvider>
+        <SnackbarProvider value={snackbar}>
+          <BookmarkProvider value={bookmark}>
+            <Routes>
+              <Route path="" element={<MainLayout />}>
+                <Route path="" element={<Home />} />
+                <Route path="article/:id" element={<Article />} />
+                <Route path="bookmarks" element={<Bookmarks />} />
+                <Route path="search-result" element={<SearchResult />} />
+                <Route path="category/:category" element={<PageByCategory />} />
+              </Route>
+            </Routes>
+          </BookmarkProvider>
+        </SnackbarProvider>
       </BrowserRouter>
     </ThemeProvider>
   );
