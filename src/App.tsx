@@ -10,7 +10,7 @@ import PageByCategory from './pages/PageByCategory/PageByCategory';
 import SearchResult from './pages/SearchResult/SearchResult';
 
 const theme = {
-  colors: {
+  color: {
     primary: 'rgba(9, 53, 123, 1)',
   },
 };
