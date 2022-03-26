@@ -13,6 +13,9 @@ const styles = css({
   fontSize: '13px',
   padding: '5px 12px 4px 12px',
   cursor: 'pointer',
+  '& img': {
+    marginRight: '5px',
+  },
 });
 
 interface Props {

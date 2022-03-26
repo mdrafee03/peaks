@@ -8,7 +8,6 @@ const kf = keyframes({
 const styles = css({
   borderRadius: '4px',
   border: 'none',
-  margin: '8px',
   padding: '14px 24px',
   color: '#fff',
   overflow: 'hidden',
