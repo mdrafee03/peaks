@@ -131,7 +131,7 @@ const SearchBar = (): JSX.Element => {
         <input
           ref={(input) => input && input.focus()}
           type="text"
-          value={searchKey}
+          value={searchKey ?? ''}
           onChange={handleOnChange}
           placeholder="Search all news"
           autoFocus
