@@ -7,7 +7,7 @@ const fetcher = async (id: string): Promise<GuardianSingle> => {
   const result = await axios.get<GuardianSingle>(`${environment.BASE_URL}/${id}`, {
     params: {
       'api-key': environment.API_KEY,
-      'show-fields': 'headline,body,trailText',
+      'show-fields': 'body,trailText,main',
     },
   });
   return result.data;
