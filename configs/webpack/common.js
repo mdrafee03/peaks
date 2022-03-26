@@ -3,13 +3,14 @@ const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     plugins: [new TsconfigPathsPlugin()],
   },
-  context: resolve(__dirname, '../../src'),
+  context: resolve(__dirname, '../..'),
   module: {
     rules: [
       {
@@ -28,7 +29,8 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    new HtmlWebpackPlugin({ template: 'index.html.ejs' }),
+    new HtmlWebpackPlugin({ template: 'src/index.html.ejs' }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
   externals: {
     react: 'React',
