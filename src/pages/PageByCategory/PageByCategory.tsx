@@ -1,23 +1,11 @@
 import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import Card from 'src/components/Card/Card';
+import { useParams } from 'react-router-dom';
+import CardList from 'src/components/CardList/CardList';
 import ContentHeader from 'src/components/ContentHeader/ContentHeader';
 import Loader from 'src/components/Loader/Loader';
 import useInfiniteScroll from 'src/hooks/useInfiniteScroll/useInfiniteScroll';
 import useSearchQuery from '../SearchResult/hooks/useSearchQuery/useSearchQuery';
-
-const styles = css({
-  display: 'flex',
-  alignItems: 'flex-start',
-  flexWrap: 'wrap',
-  '& .card-wrapper': {
-    flex: '1 1 30%',
-    minWidth: '300px',
-    margin: '0 15px 15px 0',
-    height: '350px',
-  },
-});
 
 const PageByCategory = (): JSX.Element => {
   const { category } = useParams<{ category: string }>();
@@ -52,19 +40,8 @@ const PageByCategory = (): JSX.Element => {
   return (
     <>
       {category && <ContentHeader title={mapper[category]} onSelect={selectHandler} />}
-      <section css={styles}>
-        {articles.map((article, i) => (
-          <Link
-            to={`/article/${encodeURIComponent(article.id)}`}
-            className={`card-wrapper`}
-            key={article.id}
-            ref={articles.length === i + 1 ? lastElementRef : null}
-          >
-            <Card title={article.webTitle} body={article?.fields?.trailText} />
-          </Link>
-        ))}
-        {isLoading && <Loader />}
-      </section>
+      <CardList articles={articles} lastElementRef={lastElementRef} />
+      {isLoading && <Loader />}
     </>
   );
 };
