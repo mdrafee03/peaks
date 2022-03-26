@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { Canceler } from 'axios';
 import { useEffect, useState } from 'react';
 import environment from 'src/environment';
 import useApi from 'src/hooks/useApi/useApi';
@@ -15,6 +15,10 @@ interface QueryParams {
 interface Params {
   [key: string]: string | number;
 }
+
+const CancelToken = axios.CancelToken;
+let cancel: Canceler;
+
 const fetcher = async ({
   section = 'news',
   pageSize = 15,
@@ -31,7 +35,11 @@ const fetcher = async ({
     'api-key': environment.API_KEY as string,
   };
   if (searchKey) params.q = searchKey;
-  const result = await axios.get<GuardianResponse>(`${environment.BASE_URL}/search`, { params });
+  const result = await axios.get<GuardianResponse>(`${environment.BASE_URL}/search`, {
+    params,
+    cancelToken: new CancelToken((c) => (cancel = c)),
+  });
+  cancel();
   return result.data;
 };
 

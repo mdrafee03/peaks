@@ -39,7 +39,7 @@ const SearchResult = (): JSX.Element => {
 
   useEffect(() => {
     setArticles([]);
-    request({ searchKey: searchParams.get('q') });
+    request({ searchKey: searchParams.get('q'), orderBy });
   }, [searchParams.get('q'), orderBy]);
 
   const selectHandler = (orderBy: string) => {
