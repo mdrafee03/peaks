@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import ContentHeader from 'src/components/ContentHeader/ContentHeader';
 import Card from '../../components/Card/Card';
 import Loader from '../../components/Loader/Loader';
-import useTopNewsFetching from './hooks/useTopNewsFetching/useTopNewsFetching';
+import CategoryTopArticles from './components/CategoryTopArticles/CategoryTopArticles';
+import useTopArticlesQuery from './hooks/useTopArticlesQuery/useTopArticlesQuery';
 const styles = css({
   display: 'flex',
   alignItems: 'flex-start',
@@ -22,7 +23,7 @@ const styles = css({
 });
 
 const Home = (): JSX.Element => {
-  const { data, isLoading, error, request } = useTopNewsFetching();
+  const { data, isLoading, request } = useTopArticlesQuery();
 
   useEffect(() => {
     request('newest');
@@ -32,23 +33,49 @@ const Home = (): JSX.Element => {
     request(orderBy);
   };
 
-  if (error) return <div>Oh! Crap</div>;
-
   return (
     <>
       <ContentHeader title="Top Stories" onSelect={handleSelect} />
       {isLoading && <Loader />}
-      <div css={styles} className="cards-container">
-        {data?.response.results.map((article, index) => (
-          <Link
-            to={`/article/${encodeURIComponent(article.id)}`}
-            className={`card-wrapper ${index === 0 ? 'first' : ''}`}
-            key={article.id}
-          >
-            <Card title={article.webTitle} body={article?.fields?.trailText} />
-          </Link>
-        ))}
-      </div>
+      {!isLoading && (
+        <>
+          <div css={styles}>
+            {data?.news.map((article, index) => (
+              <Link
+                to={`/article/${encodeURIComponent(article.id)}`}
+                className={`card-wrapper ${index === 0 ? 'first' : ''}`}
+                key={article.id}
+              >
+                <Card title={article.webTitle} body={article?.fields?.trailText} />
+              </Link>
+            ))}
+          </div>
+          {data?.sports && (
+            <CategoryTopArticles
+              data={data.sports}
+              title="Sports"
+              section="sport"
+              styles={styles}
+            />
+          )}
+          {data?.culture && (
+            <CategoryTopArticles
+              data={data.culture}
+              title="Culture"
+              section="culture"
+              styles={styles}
+            />
+          )}
+          {data?.lifeandstyle && (
+            <CategoryTopArticles
+              data={data.lifeandstyle}
+              title="Life and style"
+              section="lifeandstyle"
+              styles={styles}
+            />
+          )}
+        </>
+      )}
     </>
   );
 };
