@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   resolve: {
@@ -29,7 +30,10 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    new HtmlWebpackPlugin({ template: 'src/index.html.ejs' }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: 'public' }],
+    }),
+    new HtmlWebpackPlugin({ template: 'public/index.html.ejs' }),
     new ForkTsCheckerWebpackPlugin(),
   ],
   externals: {

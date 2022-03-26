@@ -26,7 +26,7 @@ interface Props {
 const BookmarkButton = ({ text, onClick }: Props): JSX.Element => {
   return (
     <Button customStyles={styles} type="button" onClick={onClick}>
-      <img src={BookMarkIcon} alt="bookmark" />
+      <img width="20px" height="100%" src={BookMarkIcon} alt="bookmark" />
       <span>{text.toUpperCase()}</span>
     </Button>
   );

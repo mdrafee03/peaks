@@ -10,11 +10,11 @@ const styles = (bottomLineColor?: string) =>
       width: '100%',
       height: 'calc(100% - 3px)',
     },
-    img: { width: '100%', height: '100%', objectFit: 'cover' },
+    img: { objectFit: 'cover' },
     '& .defaultImg': {
       background: 'rgba(9, 53, 123, 0.9)',
       textAlign: 'center',
-      img: { width: '60%', height: 'auto', paddingTop: '5rem' },
+      img: { height: 'auto', paddingTop: '5rem' },
     },
     '& .text-wrapper': {
       position: 'absolute',
@@ -61,11 +61,11 @@ const Card = ({ imgUrl, title, body, bottomLineColor }: Props): JSX.Element => {
     <section css={styles(bottomLineColor)}>
       {imgUrl ? (
         <div className="image-wrap">
-          <img src={imgUrl} alt="card" />
+          <img width="100%" height="100%" src={imgUrl} alt="card" />
         </div>
       ) : (
         <div className="image-wrap defaultImg">
-          <img src={Logo} alt="default" />
+          <img width="60%" height="100%" src={Logo} alt="default" />
         </div>
       )}
       <article className="text-wrapper">
