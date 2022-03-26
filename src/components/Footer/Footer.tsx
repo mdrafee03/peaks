@@ -7,7 +7,7 @@ const styles = (theme: Theme) =>
     background: theme.color.primary,
   });
 const Footer = () => {
-  return <div css={(theme) => styles(theme)}></div>;
+  return <footer css={(theme) => styles(theme)}></footer>;
 };
 
 export default Footer;
