@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import BookmarkButton from 'src/components/BookmarkButton/BookmarkButton';
 import Loader from 'src/components/Loader/Loader';
 import { useBookmarkContext } from 'src/contexts/Bookmark.context';
@@ -11,12 +11,23 @@ import useArticleFetching from './hooks/useArticleFetching/useArticleFetching';
 const styles = css({
   '> header': {
     width: '60%',
+    '& .date': {
+      display: 'block',
+      textDecoration: 'none',
+      fontSize: '12px',
+      lineHeight: '31px',
+      letterSpacing: '0.83px',
+      color: 'rgba(0, 0, 0, 0.87)',
+      margin: '15px 0',
+      fontFamily: 'Roboto',
+    },
     '& .title': {
       fontSize: '34px',
       lineHeight: '39px',
       fontWeight: 'bold',
       color: 'rgba(0, 0, 0, 0.87)',
       margin: '10px 0',
+      textDecoration: 'none',
     },
     '& .subtitle': {
       fontSize: '20px',
@@ -123,8 +134,12 @@ const Article = (): JSX.Element => {
               text={isBookmarked ? 'Remove Bookmark' : 'Add Bookmark'}
               onClick={handleBookmarkClick}
             />
-            <p>{dateFormatter(data.response.content.webPublicationDate)}</p>
-            <h1 className="title">{data.response.content.webTitle}</h1>
+            <Link className="date" to="/category/sport">
+              {dateFormatter(data.response.content.webPublicationDate)}
+            </Link>
+            <Link to="/category/culture" className="title">
+              {data.response.content.webTitle}
+            </Link>
             {data.response.content?.fields?.trailText && (
               <h4
                 className="subtitle"
