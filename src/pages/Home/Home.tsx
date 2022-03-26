@@ -45,7 +45,7 @@ const Home = (): JSX.Element => {
             className={`card-wrapper ${index === 0 ? 'first' : ''}`}
             key={article.id}
           >
-            <Card title={article.webTitle} body={article.fields.trailText} />
+            <Card title={article.webTitle} body={article?.fields?.trailText} />
           </Link>
         ))}
       </div>

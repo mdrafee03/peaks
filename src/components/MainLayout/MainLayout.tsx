@@ -5,7 +5,9 @@ const MainLayout = (): JSX.Element => {
   return (
     <>
       <Topbar />
-      <Outlet />
+      <div css={{ margin: '2rem 10rem' }}>
+        <Outlet />
+      </div>
     </>
   );
 };

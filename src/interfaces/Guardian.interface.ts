@@ -1,14 +1,14 @@
-interface Result {
+export interface GuardianData {
   id: string;
   webTitle: string;
   webUrl: string;
   apiUrl: string;
-  fields: {
-    trailText: string;
+  fields?: {
+    trailText?: string;
     body: string;
   };
 }
-interface GuardianData {
+export interface GuardianResponse {
   response: {
     status: string;
     total: number;
@@ -16,7 +16,6 @@ interface GuardianData {
     pages: number;
     currentPage: number;
     orderBy: 'newest' | 'oldest';
-    results: Result[];
+    results: GuardianData[];
   };
 }
-export default GuardianData;

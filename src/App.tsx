@@ -34,18 +34,16 @@ const App = (): JSX.Element => {
     <ThemeProvider theme={theme}>
       <Global styles={styles} />
       <BrowserRouter>
-        <div css={{ margin: '2rem 10rem' }}>
-          <BookmarkProvider value={bookmark}>
-            <Routes>
-              <Route path="" element={<MainLayout />}>
-                <Route path="" element={<Home />} />
-                <Route path="article/:id" element={<Article />} />
-                <Route path="bookmarks" element={<Bookmarks />} />
-                <Route path="search-result" element={<SearchResult />} />
-              </Route>
-            </Routes>
-          </BookmarkProvider>
-        </div>
+        <BookmarkProvider value={bookmark}>
+          <Routes>
+            <Route path="" element={<MainLayout />}>
+              <Route path="" element={<Home />} />
+              <Route path="article/:id" element={<Article />} />
+              <Route path="bookmarks" element={<Bookmarks />} />
+              <Route path="search-result" element={<SearchResult />} />
+            </Route>
+          </Routes>
+        </BookmarkProvider>
       </BrowserRouter>
     </ThemeProvider>
   );

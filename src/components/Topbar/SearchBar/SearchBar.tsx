@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { createSearchParams, useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
 import useClickOutside from 'src/hooks/useClickOutside/useClickOutside';
 
 const styles = css({
@@ -76,13 +76,22 @@ const styles = css({
 });
 
 const SearchBar = (): JSX.Element => {
-  const [searchKey, setSearchKey] = useState<string | null>(null);
+  const [searchKey, setSearchKey] = useState<string | undefined>();
   const [isExpanded, setIsExpanded] = useState(false);
   const { ref, isClickOutside, reset } = useClickOutside();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    if (searchKey !== null) {
+    const q = searchParams.get('q');
+    if (q !== null) {
+      setSearchKey(q);
+      setIsExpanded(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (searchKey !== undefined) {
       navigate({
         pathname: '/search-result',
         search: createSearchParams({ q: searchKey }).toString(),
@@ -104,6 +113,11 @@ const SearchBar = (): JSX.Element => {
       setIsExpanded(true);
     } else if (searchKey === '') {
       setIsExpanded(!isExpanded);
+    } else if (searchKey) {
+      navigate({
+        pathname: '/search-result',
+        search: createSearchParams({ q: searchKey }).toString(),
+      });
     }
   };
 
@@ -117,6 +131,7 @@ const SearchBar = (): JSX.Element => {
         <input
           ref={(input) => input && input.focus()}
           type="text"
+          value={searchKey}
           onChange={handleOnChange}
           placeholder="Search all news"
           autoFocus

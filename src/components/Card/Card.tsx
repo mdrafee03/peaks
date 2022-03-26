@@ -39,7 +39,7 @@ const styles = css({
 interface Props {
   imgUrl?: string;
   title: string;
-  body: string;
+  body?: string;
 }
 
 const Card = ({ imgUrl, title, body }: Props): JSX.Element => {
@@ -54,7 +54,7 @@ const Card = ({ imgUrl, title, body }: Props): JSX.Element => {
       )}
       <section className="text-wrapper">
         <header>{title}</header>
-        <p dangerouslySetInnerHTML={{ __html: body }}></p>
+        {body && <p dangerouslySetInnerHTML={{ __html: body }}></p>}
       </section>
     </section>
   );
