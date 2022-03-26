@@ -11,7 +11,6 @@ const styles = css({
 });
 
 const MainLayout = (): JSX.Element => {
-
   return (
     <>
       <Topbar />

@@ -10,10 +10,10 @@ interface GuardianSingle {
       webTitle: string;
       webUrl: string;
       apiUrl: string;
-      fields: {
-        body: string;
-        trailText: string;
-        headline: string;
+      fields?: {
+        body?: string;
+        trailText?: string;
+        main?: string;
       };
     };
   };
