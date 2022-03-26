@@ -12,7 +12,9 @@ interface Props {
 const CategoryTopArticles = ({ data, title, section, styles }: Props): JSX.Element => {
   return (
     <>
-      <h1>{title}</h1>
+      <Link to={`/category/${section}`}>
+        <h1>{title}</h1>
+      </Link>
       <div css={styles}>
         {data.map((article) => (
           <Link
