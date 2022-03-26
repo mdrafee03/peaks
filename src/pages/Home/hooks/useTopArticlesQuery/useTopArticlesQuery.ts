@@ -5,24 +5,17 @@ import useApi from 'src/hooks/useApi/useApi';
 import { GuardianResponse } from 'src/interfaces/Guardian.interface';
 import TopArticles from '../../interfaces/TopArticles.interface';
 
-const topNewsFetch = async (orderBy = 'newest'): Promise<GuardianResponse> => {
-  const result = await axios.get<GuardianResponse>(`${environment.BASE_URL}/news`, {
-    params: {
-      'order-by': orderBy,
-      'api-key': environment.API_KEY,
-      'show-fields': 'trailText',
-    },
-  });
-  return result.data;
-};
-
-const catFetcher = async (orderBy = 'newest', section: string): Promise<GuardianResponse> => {
+const fetcher = async (
+  orderBy = 'newest',
+  section: string,
+  pageSize = 3,
+): Promise<GuardianResponse> => {
   const result = await axios.get<GuardianResponse>(`${environment.BASE_URL}/${section}`, {
     params: {
       'order-by': orderBy,
       'api-key': environment.API_KEY,
-      'show-fields': 'trailText',
-      'page-size': 3,
+      'show-fields': 'trailText,main',
+      'page-size': pageSize,
       page: 1,
     },
   });
@@ -31,11 +24,11 @@ const catFetcher = async (orderBy = 'newest', section: string): Promise<Guardian
 const useTopArticlesQuery = () => {
   const [data, setData] = useState<TopArticles>();
   const [isLoading, setIsLoading] = useState(false);
-  const newsApi = useApi<GuardianResponse, string>((orderBy) => topNewsFetch(orderBy));
-  const sportsApi = useApi<GuardianResponse, string>((param) => catFetcher(param, 'sport'));
-  const cultureApi = useApi<GuardianResponse, string>((param) => catFetcher(param, 'culture'));
+  const newsApi = useApi<GuardianResponse, string>((orderBy) => fetcher(orderBy, 'news', 8));
+  const sportsApi = useApi<GuardianResponse, string>((param) => fetcher(param, 'sport'));
+  const cultureApi = useApi<GuardianResponse, string>((param) => fetcher(param, 'culture'));
   const lifeandstyleApi = useApi<GuardianResponse, string>((param) =>
-    catFetcher(param, 'lifeandstyle'),
+    fetcher(param, 'lifeandstyle'),
   );
 
   useEffect(() => {
