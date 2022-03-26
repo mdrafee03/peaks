@@ -46,10 +46,10 @@ const Card = ({ imgUrl, title, body }: Props): JSX.Element => {
   return (
     <section css={styles} className="card-section">
       {imgUrl ? (
-        <img src={imgUrl} alt="card" />
+        <img width="100%" height="100%" src={imgUrl} alt="card" />
       ) : (
         <div className="defaultImg">
-          <img src={Logo} alt="default" />
+          <img width="100%" height="100%" src={Logo} alt="default" />
         </div>
       )}
       <section className="text-wrapper">
