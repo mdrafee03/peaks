@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom';
 import BookmarkButton from 'src/components/BookmarkButton/BookmarkButton';
 import Loader from 'src/components/Loader/Loader';
 import { useBookmarkContext } from 'src/contexts/Bookmark.context';
+import { useSnackbarContext } from 'src/contexts/Snackbar.context';
 import useArticleFetching from './hooks/useArticleFetching/useArticleFetching';
 
 const Article = (): JSX.Element => {
   const { request, data, isLoading } = useArticleFetching();
   const { checkIfBookmarked, addBookmark, removeBookmark } = useBookmarkContext();
+  const { showSuccessMessage, showErrorMessage } = useSnackbarContext();
   const [isBookmarked, setIsBookmarked] = useState<boolean>();
   const { id } = useParams();
 
@@ -21,7 +23,10 @@ const Article = (): JSX.Element => {
   const handleBookmarkClick = () => {
     if (isBookmarked && id) {
       const isSuccess = removeBookmark(id);
-      if (isSuccess) setIsBookmarked(false);
+      if (isSuccess) {
+        setIsBookmarked(false);
+        showErrorMessage('removed from bookmarks'.toUpperCase());
+      }
     } else if (!isBookmarked && id && data) {
       const isSuccess = addBookmark({
         id: id,
@@ -29,7 +34,10 @@ const Article = (): JSX.Element => {
         trailText: data.response.content.fields.trailText,
         webPublicationDate: data.response.content.webPublicationDate,
       });
-      if (isSuccess) setIsBookmarked(true);
+      if (isSuccess) {
+        setIsBookmarked(true);
+        showSuccessMessage('saved to bookmarks'.toUpperCase());
+      }
     }
   };
 
