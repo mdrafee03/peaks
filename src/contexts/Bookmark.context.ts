@@ -1,8 +1,8 @@
 import { createContext, useContext } from 'react';
-import Bookmark from 'src/interfaces/Bookmark.interface';
+import { GuardianData } from 'src/interfaces/Guardian.interface';
 interface BookmarkContextState {
-  bookmarks: Bookmark[];
-  addBookmark: (article: Bookmark) => boolean;
+  bookmarks: GuardianData[];
+  addBookmark: (article: GuardianData) => boolean;
   removeBookmark: (id: string) => boolean;
   checkIfBookmarked: (id: string) => boolean;
   sortBookmarkByDate: (orderBy?: string) => void;

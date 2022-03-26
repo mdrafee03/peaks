@@ -1,11 +1,13 @@
 export interface GuardianData {
   id: string;
   webTitle: string;
-  webUrl: string;
-  apiUrl: string;
+  webUrl?: string;
+  webPublicationDate: string;
+  apiUrl?: string;
   fields?: {
     trailText?: string;
-    body: string;
+    body?: string;
+    main?: string;
   };
 }
 export interface GuardianResponse {

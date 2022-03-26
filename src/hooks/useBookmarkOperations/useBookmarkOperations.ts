@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import Bookmark from 'src/interfaces/Bookmark.interface';
+import { GuardianData } from 'src/interfaces/Guardian.interface';
 
 const useBookmarkOperations = () => {
-  const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
+  const [bookmarks, setBookmarks] = useState<GuardianData[]>([]);
 
-  const addBookmark = (article: Bookmark) => {
+  const addBookmark = (article: GuardianData) => {
     if (bookmarks.some((bookmark) => bookmark.id === article.id)) {
       return false;
     } else {

@@ -28,7 +28,7 @@ const fetcher = async (
     page: pageNumber,
     'page-size': pageSize,
     'order-by': orderBy,
-    'show-fields': 'trailText',
+    'show-fields': 'trailText,main',
     'api-key': environment.API_KEY as string,
   };
   if (searchKey) params.q = searchKey;

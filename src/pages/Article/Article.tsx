@@ -33,6 +33,14 @@ const styles = css({
   },
   '> main': {
     display: 'flex',
+    figcaption: {
+      color: 'rgba(0, 0, 0, 0.87)',
+      fontFamily: 'Roboto',
+      fontSize: '12px',
+      lineHeight: '14px',
+      letterSpacing: '0.3px',
+      opacity: '0.5',
+    },
     '& .body': {
       flex: '0 0 60%',
       width: '60%',
@@ -47,20 +55,12 @@ const styles = css({
       '& img': {
         width: '100%',
         height: 'auto',
-      }
+      },
     },
     '& .figure': {
       '& img': {
         width: '100%',
         height: 'auto',
-      },
-      '& figcaption': {
-        color: 'rgba(0, 0, 0, 0.87)',
-        fontFamily: 'Roboto',
-        fontSize: '12px',
-        lineHeight: '14px',
-        letterSpacing: '0.3px',
-        opacity: '0.5',
       },
     },
   },
@@ -100,8 +100,11 @@ const Article = (): JSX.Element => {
       const isSuccess = addBookmark({
         id: id,
         webTitle: data.response.content.webTitle,
-        trailText: data.response.content?.fields?.trailText,
         webPublicationDate: data.response.content.webPublicationDate,
+        fields: {
+          main: data.response.content.fields?.main,
+          trailText: data.response.content?.fields?.trailText,
+        },
       });
       if (isSuccess) {
         setIsBookmarked(true);
