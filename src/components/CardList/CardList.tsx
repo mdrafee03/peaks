@@ -6,20 +6,39 @@ import Card from '../Card/Card';
 
 const styles = css({
   display: 'flex',
-  justifyContent: 'center',
   alignItems: 'center',
   margin: '0 auto',
   flexWrap: 'wrap',
+
   '& a': {
-    flex: '1 1 calc(33% - 8px)',
+    flex: '0 1 calc(33% - 7px)',
     minWidth: '300px',
-    maxWidth: '40%',
     margin: '0 15px 15px 0',
     height: '350px',
     fontSize: '20px',
-  },
-  '& a:nth-of-type(3n)': {
-    marginRight: 0,
+    '&:nth-of-type(3n)': {
+      marginRight: 0,
+    },
+    '@media (max-width: 992px)': {
+      flex: '0 1 calc(50% - 15px)',
+      '&:nth-of-type(2n)': {
+        marginRight: 0,
+      },
+      '&:nth-of-type(3n)': {
+        marginRight: '15px',
+      },
+    },
+    '@media (max-width: 768px)': {
+      flex: '0 1 100%',
+      justifySelf: 'center',
+      marginRight: 0,
+      '&:nth-of-type(2n)': {
+        marginRight: 0,
+      },
+      '&:nth-of-type(3n)': {
+        marginRight: 0,
+      },
+    },
   },
 });
 
