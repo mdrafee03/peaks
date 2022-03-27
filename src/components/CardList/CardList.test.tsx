@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Logo from 'src/assets/logo.svg';
 import { GuardianData } from 'src/interfaces/Guardian.interface';
 import { renderRootProvider } from 'src/utils/RootProviderTest';

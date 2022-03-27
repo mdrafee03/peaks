@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
+    "@testing-library/react-hooks": "^7.0.2",
     "axios": "^0.26.1",
     "copy-webpack-plugin": "^10.2.4",
     "dotenv-webpack": "^7.1.0",
