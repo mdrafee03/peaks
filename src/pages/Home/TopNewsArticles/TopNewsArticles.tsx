@@ -7,11 +7,17 @@ import findImageSrc from 'src/utils/findImageSrc';
 
 const styles = css({
   display: 'flex',
+  '@media (max-width: 768px)': {
+    flexWrap: 'wrap',
+  },
   '& .top-news': {
     flex: '0 0 49%',
     height: '400px',
     width: '540px',
     fontSize: '24px',
+    '@media (max-width: 768px)': {
+      flex: '0 0 100%',
+    },
   },
   '& .right-top-section': {
     display: 'flex',
@@ -36,6 +42,10 @@ const styles = css({
     flex: '1 0 30%',
     margin: '0 15px 15px 0',
     fontSize: '20px',
+    '@media (max-width: 768px)': {
+      width: '300px',
+      flex: '1 1 50%',
+    },
   },
 });
 

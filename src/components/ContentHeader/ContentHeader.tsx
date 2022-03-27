@@ -32,6 +32,13 @@ const styles = css({
   },
 });
 
+const bookmarkStyle = css({
+  '@media (max-width: 768px)': {
+    width: '16rem',
+    marginBottom: '10px',
+  },
+});
+
 interface Props {
   title: string;
   isBookmarkVisible?: boolean;
@@ -60,7 +67,13 @@ const ContentHeader = ({
     <header css={styles}>
       <h1>{title}</h1>
       <div className="right-container">
-        {isBookmarkVisible && <BookmarkButton text="View BookMark" onClick={handleBookmarkClick} />}
+        {isBookmarkVisible && (
+          <BookmarkButton
+            style={bookmarkStyle}
+            text="View BookMark"
+            onClick={handleBookmarkClick}
+          />
+        )}
         <select className="select" aria-label="State" onChange={handleSelect}>
           <option value="newest">Newest first</option>
           <option value="oldest">Oldest first</option>

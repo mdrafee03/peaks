@@ -1,8 +1,8 @@
-import { css } from '@emotion/react';
+import { css, SerializedStyles } from '@emotion/react';
 import BookMarkIcon from '../../assets/icons/bookmark.svg';
 import Button from '../Button/Button';
 
-const styles = css({
+const buttonStyles = css({
   background: 'rgba(9, 53, 123, 1)',
   color: '#fff',
   display: 'flex',
@@ -16,23 +16,18 @@ const styles = css({
   '& img': {
     marginRight: '5px',
   },
-  '@media (max-width: 768px)': {
-    width: '16rem',
-    marginBottom: '10px',
-  },
 });
 
 interface Props {
   text: string;
   onClick: () => void;
+  style?: SerializedStyles;
 }
 
-const BookmarkButton = ({ text, onClick }: Props): JSX.Element => {
-  return (
-    <Button customStyles={styles} type="button" onClick={onClick}>
-      <img width="20px" height="100%" src={BookMarkIcon} alt="bookmark" />
-      <span>{text.toUpperCase()}</span>
-    </Button>
-  );
-};
+const BookmarkButton = ({ text, onClick, style = css({}) }: Props): JSX.Element => (
+  <Button customStyles={css([buttonStyles, style])} type="button" onClick={onClick}>
+    <img width="20px" height="100%" src={BookMarkIcon} alt="bookmark" />
+    <span>{text.toUpperCase()}</span>
+  </Button>
+);
 export default BookmarkButton;

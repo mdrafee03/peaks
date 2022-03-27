@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import { useEffect } from 'react';
 import CardList from 'src/components/CardList/CardList';
 import ContentHeader from 'src/components/ContentHeader/ContentHeader';
@@ -6,7 +5,6 @@ import Loader from '../../components/Loader/Loader';
 import CategoryTopArticles from './components/CategoryTopArticles/CategoryTopArticles';
 import useTopArticlesQuery from './hooks/useTopArticlesQuery/useTopArticlesQuery';
 import TopNewsArticles from './TopNewsArticles/TopNewsArticles';
-const styles = css({});
 
 const Home = (): JSX.Element => {
   const { data, isLoading, request } = useTopArticlesQuery();
