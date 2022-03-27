@@ -9,7 +9,7 @@ import useBookmarkOperations from 'src/hooks/useBookmarkOperations/useBookmarkOp
 import useSnackbarOperations from 'src/hooks/useSnackbarOperations/useSnackbarOperations';
 
 interface RootProviderProp {
-  themeValue: Theme;
+  themeValue?: Theme;
   bookmark?: BookmarkContextState;
   snackbar?: SnackbarState;
 }
