@@ -14,6 +14,8 @@ To get the coverage report of the test
 ```
 yarn test:coverage
 ```
+The summary of the coverage report is shown below
+![image](https://user-images.githubusercontent.com/29922329/160303603-da73cc23-3dc5-42e7-a5e6-a87db8447f2b.png)
 
 The project will be run in http://localhost:8080
 To run the PWA
