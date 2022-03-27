@@ -40,6 +40,7 @@ const styles = css({
   },
   '& a': {
     flex: '1 0 30%',
+    textDecoration: 'none',
     margin: '0 15px 15px 0',
     fontSize: '20px',
     '@media (max-width: 768px)': {
