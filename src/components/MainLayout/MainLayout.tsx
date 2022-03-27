@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
-import { Outlet } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Snackbar from '../Snackbar/Snackbar';
 import Topbar from '../Topbar/Topbar';
@@ -12,6 +13,12 @@ const styles = css({
 });
 
 const MainLayout = (): JSX.Element => {
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <>
       <Topbar />
