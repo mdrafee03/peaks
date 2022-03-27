@@ -70,7 +70,6 @@ const Button = ({
       css={css([styles, customStyles])}
       onClick={handleClick}
       className="ripple-button"
-      data-testid="button"
     >
       {isRippling ? (
         <span

@@ -1,12 +1,21 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Button from './Button';
 
 describe('Button test', () => {
-  const button = render(<Button type="button" onClick={() => 'success'}></Button>);
-  expect(button.getByTestId('button')).toBeTruthy();
-
-  it('should equal 4', () => {
-    expect(2 + 2).toBe(4);
+  const onClick = jest.fn();
+  beforeEach(() => {
+    render(<Button type="button" onClick={onClick}></Button>);
   });
+
+  it('render correctly', () => {
+    expect(screen.getByRole('button')).toBeTruthy();
+  });
+
+  it('call on onClick when onClick is triggered', () => {
+    const button = screen.getByRole('button');
+    userEvent.click(button);
+    expect(onClick).toHaveBeenCalled();
+  });
+
 });
