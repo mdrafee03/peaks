@@ -5,7 +5,8 @@ import Snackbar from '../Snackbar/Snackbar';
 import Topbar from '../Topbar/Topbar';
 
 const styles = css({
-  margin: '2rem auto',
+  margin: '1rem auto',
+  padding: '0 1rem',
   minHeight: '70vh',
   maxWidth: '1100px',
 });

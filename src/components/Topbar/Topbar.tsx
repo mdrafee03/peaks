@@ -10,7 +10,17 @@ const styles = (theme: Theme) =>
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    img: { width: '7rem', padding: '2rem 0' },
+    img: {
+      width: '7rem',
+      padding: '2rem 0',
+      '@media (max-width: 768px)': {
+        padding: '0.5rem 0',
+      },
+    },
+    '@media (max-width: 768px)': {
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
   });
 
 const Topbar = (): JSX.Element => {

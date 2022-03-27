@@ -8,8 +8,18 @@ const styles = css({
   justifyContent: 'space-between',
   alignItems: 'center',
   flexWrap: 'wrap',
-  '& h1': { color: 'rgba(0, 0, 0, 0.87)', size: '3rem', lineHeight: '3rem' },
-  '& .right-container': { display: 'flex', alignItems: 'center' },
+  margin: '1rem 0',
+  '@media (max-width: 576px)': {
+    flexDirection: 'column',
+  },
+  h1: { color: 'rgba(0, 0, 0, 0.87)', size: '3rem', lineHeight: '3rem', margin: 0 },
+  '& .right-container': {
+    display: 'flex',
+    alignItems: 'center',
+    '@media (max-width: 768px)': {
+      flexDirection: 'column',
+    },
+  },
   '& .select': {
     outline: 'none',
     border: 'none',

@@ -1,9 +1,16 @@
+import { css } from '@emotion/react';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import CardList from 'src/components/CardList/CardList';
 import ContentHeader from 'src/components/ContentHeader/ContentHeader';
+import Loader from 'src/components/Loader/Loader';
 import useInfiniteScroll from 'src/hooks/useInfiniteScroll/useInfiniteScroll';
 import useSearchQuery from './hooks/useSearchQuery/useSearchQuery';
+
+const styles = css({
+  textAlign: 'center',
+  color: 'rgba(0, 0, 0, 0.7)',
+});
 
 const SearchResult = (): JSX.Element => {
   const { request, articles, setArticles, isLoading, hasMore } = useSearchQuery('news');
@@ -35,6 +42,8 @@ const SearchResult = (): JSX.Element => {
     <>
       <ContentHeader title="Search Result" onSelect={selectHandler} />
       <CardList articles={articles} lastElementRef={lastElementRef} />
+      {!isLoading && articles.length === 0 && <h1 css={styles}>No result found</h1>}
+      {isLoading && <Loader />}
     </>
   );
 };

@@ -16,6 +16,10 @@ const styles = css({
   '& img': {
     marginRight: '5px',
   },
+  '@media (max-width: 768px)': {
+    width: '16rem',
+    marginBottom: '10px',
+  },
 });
 
 interface Props {
