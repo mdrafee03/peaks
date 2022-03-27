@@ -9,8 +9,20 @@ import dateFormatter from 'src/utils/dateFormatter';
 import useArticleFetching from './hooks/useArticleFetching/useArticleFetching';
 
 const styles = css({
+  '@media (max-width: 992px)': {
+    margin: '0 8rem',
+  },
+  '@media (max-width: 768px)': {
+    margin: '0 2rem',
+  },
+  '@media (max-width: 576px)': {
+    margin: 0,
+  },
   '> header': {
     width: '60%',
+    '@media (max-width: 992px)': {
+      width: '100%',
+    },
     '& .date': {
       display: 'block',
       textDecoration: 'none',
@@ -50,6 +62,9 @@ const styles = css({
   },
   '> main': {
     display: 'flex',
+    '@media (max-width: 992px)': {
+      flexDirection: 'column',
+    },
     figcaption: {
       color: 'rgba(0, 0, 0, 0.87)',
       fontFamily: 'Roboto',
@@ -72,6 +87,11 @@ const styles = css({
       '& img': {
         width: '100%',
         height: 'auto',
+      },
+      '@media (max-width: 992px)': {
+        order: 2,
+        width: '100%',
+        flex: '0 0 100%',
       },
     },
     '& .figure': {
