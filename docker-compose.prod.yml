@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: peaks-prod
+    image: peaks-prod
+    build:
+      context: .
+      target: production
+    ports:
+      - 5500:80
