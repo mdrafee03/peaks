@@ -2,7 +2,6 @@ import { css, Theme, useTheme } from '@emotion/react';
 import { useEffect } from 'react';
 import BookmarkIcon from 'src/assets/icons/bookmark-outline.svg';
 import { useSnackbarContext } from 'src/contexts/Snackbar.context';
-import React from 'react';
 
 const styles = (theme: Theme, type: string) =>
   css({

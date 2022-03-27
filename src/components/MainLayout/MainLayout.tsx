@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from '@emotion/react';
 import { useLayoutEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
