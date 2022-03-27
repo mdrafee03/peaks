@@ -19,7 +19,7 @@
     "start": "NODE_ENV=development yarn run start-dev",
     "start-dev": "webpack serve --config=configs/webpack/dev.js",
     "start-prod": "yarn run build && node express.js",
-    "test:coverage": "jest --coverage --watchAll --config=configs/jest.json",
+    "test:coverage": "node scripts/test.js --config configs/jest.config.js --coverage --watchAll=false --no-cache",
     "test": "node scripts/test.js --config configs/jest.config.js -o"
   },
   "dependencies": {

@@ -22,9 +22,9 @@ const MainLayout = (): JSX.Element => {
   return (
     <>
       <Topbar />
-      <div css={styles}>
+      <main css={styles}>
         <Outlet />
-      </div>
+      </main>
       <Footer />
       <Snackbar />
     </>

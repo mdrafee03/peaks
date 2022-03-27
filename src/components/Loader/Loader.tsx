@@ -23,9 +23,9 @@ const styles = {
 };
 const Loader = () => {
   return (
-    <div css={styles.container}>
+    <article css={styles.container}>
       <div css={styles.loader}></div>
-    </div>
+    </article>
   );
 };
 export default Loader;
