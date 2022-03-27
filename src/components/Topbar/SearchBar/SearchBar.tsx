@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
 import useClickOutside from 'src/hooks/useClickOutside/useClickOutside';
+import useDebounce from 'src/hooks/useDebounce/useDebounce';
 
 const styles = css({
   position: 'relative',
@@ -79,6 +80,7 @@ const SearchBar = (): JSX.Element => {
   const [searchKey, setSearchKey] = useState<string | undefined>();
   const [isExpanded, setIsExpanded] = useState(false);
   const { ref, isClickOutside, reset } = useClickOutside();
+  const debouncedSearchKey = useDebounce(searchKey ?? '', 1000);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -94,10 +96,10 @@ const SearchBar = (): JSX.Element => {
     if (searchKey !== undefined) {
       navigate({
         pathname: '/search-result',
-        search: createSearchParams({ q: searchKey }).toString(),
+        search: createSearchParams({ q: debouncedSearchKey }).toString(),
       });
     }
-  }, [searchKey]);
+  }, [debouncedSearchKey]);
 
   useEffect(() => {
     if (isClickOutside && !searchKey) {
@@ -113,10 +115,10 @@ const SearchBar = (): JSX.Element => {
       setIsExpanded(true);
     } else if (!searchKey) {
       setIsExpanded(!isExpanded);
-    } else if (searchKey) {
+    } else if (debouncedSearchKey) {
       navigate({
         pathname: '/search-result',
-        search: createSearchParams({ q: searchKey }).toString(),
+        search: createSearchParams({ q: debouncedSearchKey }).toString(),
       });
     }
   };
