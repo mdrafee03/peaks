@@ -1,5 +1,5 @@
 import { css, keyframes, SerializedStyles } from '@emotion/react';
-import { ReactNode, useEffect, useState, MouseEvent } from 'react';
+import { useEffect, useState, MouseEvent, type PropsWithChildren } from 'react';
 const kf = keyframes({
   '0%': { transform: 'scale(1)', opacity: 1 },
   '50%': { transform: 'scale(10)', opacity: 0.375 },
@@ -33,13 +33,17 @@ const styles = css({
 });
 
 interface Props {
-  children: ReactNode;
   customStyles?: SerializedStyles;
   type: 'button' | 'reset' | 'submit';
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ children, onClick, type, customStyles }: Props): JSX.Element => {
+const Button = ({
+  children,
+  onClick,
+  type,
+  customStyles,
+}: PropsWithChildren<Props>): JSX.Element => {
   const [coords, setCoords] = useState({ x: -1, y: -1 });
   const [isRippling, setIsRippling] = useState(false);
 
@@ -66,6 +70,7 @@ const Button = ({ children, onClick, type, customStyles }: Props): JSX.Element =
       css={css([styles, customStyles])}
       onClick={handleClick}
       className="ripple-button"
+      data-testid="button"
     >
       {isRippling ? (
         <span
