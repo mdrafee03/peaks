@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Card from 'src/components/Card/Card';
 import OnlyTitleCard from 'src/components/OnlyTitleCard/OnlyTitleCard';
 import { GuardianData } from 'src/interfaces/Guardian.interface';
-import findImageSrc from 'src/utils/findImageSrc';
+import findImageSrc from 'src/utils/findImageSrc/findImageSrc';
 
 const styles = css({
   display: 'flex',

@@ -5,7 +5,7 @@ import BookmarkButton from 'src/components/BookmarkButton/BookmarkButton';
 import Loader from 'src/components/Loader/Loader';
 import { useBookmarkContext } from 'src/contexts/Bookmark.context';
 import { useSnackbarContext } from 'src/contexts/Snackbar.context';
-import dateFormatter from 'src/utils/dateFormatter';
+import dateFormatter from 'src/utils/dateFormatter/dateFormatter';
 import useArticleFetching from './hooks/useArticleFetching/useArticleFetching';
 
 const styles = css({

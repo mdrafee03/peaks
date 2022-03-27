@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { GuardianData } from 'src/interfaces/Guardian.interface';
-import findImageSrc from 'src/utils/findImageSrc';
+import findImageSrc from 'src/utils/findImageSrc/findImageSrc';
 import Card from '../Card/Card';
 
 const styles = css({

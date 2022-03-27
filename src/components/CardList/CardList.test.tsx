@@ -1,13 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { screen } from '@testing-library/react';
+import Logo from 'src/assets/logo.svg';
 import { GuardianData } from 'src/interfaces/Guardian.interface';
 import { renderRootProvider } from 'src/utils/RootProviderTest';
 import CardList from './CardList';
-import Logo from 'src/assets/logo.svg';
 
-describe('Bookmark button test', () => {
-  const title = 'test';
-  const onClick = jest.fn();
+describe('Cardlist test', () => {
   const articles: GuardianData[] = [
     {
       id: '1',
