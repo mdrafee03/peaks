@@ -100,7 +100,7 @@ const SearchBar = (): JSX.Element => {
   }, [searchKey]);
 
   useEffect(() => {
-    if (isClickOutside && searchKey === '') {
+    if (isClickOutside && !searchKey) {
       setIsExpanded(false);
     } else if (isClickOutside === true) {
       reset();
@@ -111,7 +111,7 @@ const SearchBar = (): JSX.Element => {
     if (!isExpanded) {
       reset();
       setIsExpanded(true);
-    } else if (searchKey === '') {
+    } else if (!searchKey) {
       setIsExpanded(!isExpanded);
     } else if (searchKey) {
       navigate({
