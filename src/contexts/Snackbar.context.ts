@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 type SnackbarType = 'success' | 'error';
-interface SnackbarState {
+
+export interface SnackbarState {
   isVisible: boolean;
   type: SnackbarType;
   title: string;

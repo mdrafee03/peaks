@@ -1,6 +1,7 @@
 import { createContext, useContext } from 'react';
 import { GuardianData } from 'src/interfaces/Guardian.interface';
-interface BookmarkContextState {
+
+export interface BookmarkContextState {
   bookmarks: GuardianData[];
   addBookmark: (article: GuardianData) => boolean;
   removeBookmark: (id: string) => boolean;

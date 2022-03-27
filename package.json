@@ -21,10 +21,10 @@
     "start-prod": "yarn run build && node express.js",
     "test:coverage": "jest --coverage --watchAll --config=configs/jest.json",
     "test": "jest --watchAll --config=configs/jest.json"
-
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
+    "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",

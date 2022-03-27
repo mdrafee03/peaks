@@ -17,5 +17,5 @@ describe('Button test', () => {
     userEvent.click(button);
     expect(onClick).toHaveBeenCalled();
   });
-
+  
 });
