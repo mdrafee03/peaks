@@ -79,14 +79,20 @@ const styles = css({
       color: 'rgba(0, 0, 0, 0.87)',
       letterSpacing: '0.1px',
       lineHeight: '20px',
+      fontFamily: 'Roboto',
+      fontSize: '14px',
       '& a': {
         textDecoration: 'none',
         borderBottom: '1px solid #DCDCDC',
         color: '#C70000',
       },
-      '& img': {
+      img: {
         width: '100%',
         height: 'auto',
+      },
+      iframe: {
+        width: '100%',
+        height: '17em',
       },
       '@media (max-width: 992px)': {
         order: 2,

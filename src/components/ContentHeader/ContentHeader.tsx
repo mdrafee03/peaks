@@ -27,7 +27,8 @@ const styles = css({
     borderBottom: '1px solid black',
     width: '16rem',
     paddingBottom: '8px',
-    fontSize: '15px',
+    fontFamily: 'Roboto',
+    fontSize: '16px',
     marginLeft: '10px',
   },
 });

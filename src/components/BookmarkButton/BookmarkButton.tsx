@@ -16,6 +16,10 @@ const buttonStyles = css({
   '& img': {
     marginRight: '5px',
   },
+  span: {
+    fontFamily: 'Roboto',
+    fontWeight: 500,
+  },
 });
 
 interface Props {
