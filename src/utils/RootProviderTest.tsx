@@ -1,6 +1,7 @@
 import { Theme, ThemeProvider } from '@emotion/react';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { FC, PropsWithChildren, ReactElement } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import theme from 'src/config/theme';
 import { BookmarkContextState, BookmarkProvider } from 'src/contexts/Bookmark.context';
 import { SnackbarProvider, SnackbarState } from 'src/contexts/Snackbar.context';
@@ -27,9 +28,11 @@ export const RootProvider = ({
   const defaultSnackbar = useSnackbarOperations();
   return (
     <ThemeProvider theme={themeValue}>
-      <SnackbarProvider value={snackbar ?? defaultSnackbar}>
-        <BookmarkProvider value={bookmark ?? defaultBookmark}>{children}</BookmarkProvider>
-      </SnackbarProvider>
+      <BrowserRouter>
+        <SnackbarProvider value={snackbar ?? defaultSnackbar}>
+          <BookmarkProvider value={bookmark ?? defaultBookmark}>{children}</BookmarkProvider>
+        </SnackbarProvider>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };

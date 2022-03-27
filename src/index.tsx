@@ -1,7 +1,7 @@
 import { render } from 'react-dom';
 import App from './App';
 
-const rootEl = document.getElementById('root');
+const rootEl = document.getElementById('root') || document.createElement('div');
 
 render(<App />, rootEl);
 
